@@ -1,1 +1,72 @@
-gaxdrgadfgwrgA
+.hide {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    background: blue;
+    color: white;
+    width: 100%;
+}
+
+.input-container {
+    /*background: blue;*/
+    color: white;
+    height: auto;
+    width: auto;
+    margin: 0px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#showcase{
+    background-image:url('https://wallpaperplay.com/walls/full/d/7/9/180406.jpg');
+    background-size:cover;
+    background-position:center;
+    height:100vh;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding: 0 20px;
+    
+    }
+
+    .location-row {
+        margin: 10px;
+    }
+
+    .date-row {
+        margin: 10px;
+    }
+
+    .weather-row {
+        color: white;
+        background: blue;
+        text-align: center;
+    }
+
+    .tourism-row {
+        color: white;
+        background: blue;
+        align-content: center;
+    }
+
+    .facts-row {
+        color: white;
+        background: blue;
+        text-align: center;
+    }
+
+    .weather-container {
+        height: auto;
+        
+    }
