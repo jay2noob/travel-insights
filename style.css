@@ -68,5 +68,8 @@ header {
 
     .weather-container {
         height: auto;
-        
+        width: 400px;
+        background: floralwhite;
+        color: blue;
+        text-align: center;
     }
