@@ -1,6 +1,8 @@
 var resultsEl = document.querySelector(".results-container");
 var inputEl = document.querySelector(".input-container");
 var searchBtn = document.querySelector(".btn");
+var lat = ;
+var long = ;
 
 searchBtn.addEventListener("click", showResults);
 
@@ -31,12 +33,11 @@ $(document).ready(function() {
           console.log(data);
 
           var widget = show(data);
-
           $(".weather-container").html(widget);
-
           $(".location").val();
-
           show(data);
+
+
         }
       });
     } else {
