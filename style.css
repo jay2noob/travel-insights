@@ -64,6 +64,7 @@ header {
         color: white;
         background: blue;
         text-align: center;
+        
     }
 
     .weather-container {
@@ -72,4 +73,6 @@ header {
         background: floralwhite;
         color: blue;
         text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
