@@ -12,6 +12,7 @@ function showResults() {
 
 $(document).ready(function() {
   // to request data from openweather.org
+  
   $(".btn").click(function() {
     var city = $(".location").val();
 
