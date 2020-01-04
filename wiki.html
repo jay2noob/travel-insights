@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+var lat = '41.4993'
+var long = '-81.6944'
+var url = "https://en.wikipedia.org/w/api.php"; 
+
+var params = {
+    action: "query",
+    list: "geosearch",
+    gscoord: `${lat}|${long}`,
+    gsradius: "10000",
+    gslimit: "10",
+    format: "json"
+};
+
+url = url + "?origin=*";
+Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+
+fetch(url)
+    .then(function(response){  return response.json();})
+    .then(function(response) {
+        console.log(response.query.geosearch[0].pageid)
+        var pages = response.query.geosearch;
+        for (var place in pages) {
+            let thing = document.createElement('a')
+
+            thing.href = 'https://en.wikipedia.org/?curid=' + response.query.geosearch[0].pageid;
+            thing.textContent = 'link'
+            document.querySelector('body').append(thing)
+        }
+    })
+    .catch(function(error){console.log(error);});
+
+</script>
+</html>
+
