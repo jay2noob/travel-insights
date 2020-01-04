@@ -1,7 +1,7 @@
 var resultsEl = document.querySelector(".results-container");
 var inputEl = document.querySelector(".input-container");
 var searchBtn = document.querySelector(".btn");
-//
+var wikiHeading = document.getElementById("firstHeading");
 
 searchBtn.addEventListener("click", showResults);
 
@@ -12,7 +12,7 @@ function showResults() {
 
 $(document).ready(function() {
   // to request data from openweather.org
-
+  
   $(".btn").click(function() {
     var city = $(".location").val();
 
@@ -29,7 +29,7 @@ $(document).ready(function() {
         dataType: "json",
 
         success: function(data) {
-          var lat =  data.coord.lat;
+          var lat = data.coord.lat;
           var long = data.coord.lon;
           console.log(data);
 
@@ -37,8 +37,8 @@ $(document).ready(function() {
           $(".weather-container").html(widget);
           $(".location").val();
           show(data);
-          var url = "https://en.wikipedia.org/w/api.php";
 
+          var url = "https://en.wikipedia.org/w/api.php";
           var params = {
             action: "query",
             list: "geosearch",
@@ -47,12 +47,12 @@ $(document).ready(function() {
             gslimit: "10",
             format: "json"
           };
-          
+
           url = url + "?origin=*";
           Object.keys(params).forEach(function(key) {
             url += "&" + key + "=" + params[key];
           });
-          
+
           fetch(url)
             .then(function(response) {
               return response.json();
@@ -60,27 +60,25 @@ $(document).ready(function() {
             .then(function(response) {
               console.log(response.query.geosearch[0].pageid);
               var pages = response.query.geosearch;
-              for (var place in pages) {
+
+              for (i = 0; i < 1; i++) {
                 let thing = document.createElement("a");
-          
+
                 thing.href =
                   "https://en.wikipedia.org/?curid=" +
-                  response.query.geosearch[0].pageid;
-                thing.textContent = "link";
-                document.querySelector("body").append(thing);
+                  response.query.geosearch[i].pageid;
+                thing.textContent = data.name;
+                document.querySelector(".facts-container").append(thing);
               }
             })
             .catch(function(error) {
               console.log(error);
             });
-
         }
       });
     } else {
       $("#error").html("Field cannot be empty");
     }
-
-   
   });
 
   //return data current for weather temp, humidity, wind, uv index
@@ -89,7 +87,7 @@ $(document).ready(function() {
     return (
       "<h4>Current Weather for " +
       data.name +
-      "," +
+      ", " +
       data.sys.country +
       "</h4>" +
       "<h5><strong>Weather</strong>: " +
@@ -97,7 +95,7 @@ $(document).ready(function() {
       "</h5>" +
       "<h5><strong>Temperature</strong>: " +
       data.main.temp +
-      "</h5>" +
+      " &deg;F</h5>" +
       "<h5><strong>Pressure</strong>: " +
       data.main.pressure +
       "</h5>" +
@@ -106,52 +104,13 @@ $(document).ready(function() {
       "</h5>" +
       "<h5><strong>Min Temperature</strong>: " +
       data.main.temp_min +
-      "</h5>" +
+      " &deg;F</h5>" +
       "<h5><strong>Max Temperature</strong>: " +
       data.main.temp_max +
-      "</h5>" +
+      " &deg;F</h5>" +
       "<h5><strong>Wind speed</strong>: " +
       data.wind.speed +
-      "</h5>"
+      " mph</h5>"
     );
   }
- 
 });
-/*var lat = "41.4993";
-var long = "-81.6944";
-var url = "https://en.wikipedia.org/w/api.php";
-
-var params = {
-  action: "query",
-  list: "geosearch",
-  gscoord: `${lat}|${long}`,
-  gsradius: "10000",
-  gslimit: "10",
-  format: "json"
-};
-
-url = url + "?origin=*";
-Object.keys(params).forEach(function(key) {
-  url += "&" + key + "=" + params[key];
-});
-
-fetch(url)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(response) {
-    console.log(response.query.geosearch[0].pageid);
-    var pages = response.query.geosearch;
-    for (var place in pages) {
-      let thing = document.createElement("a");
-
-      thing.href =
-        "https://en.wikipedia.org/?curid=" +
-        response.query.geosearch[0].pageid;
-      thing.textContent = "link";
-      document.querySelector("body").append(thing);
-    }
-  })
-  .catch(function(error) {
-    console.log(error);
-  });*/
