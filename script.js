@@ -117,6 +117,13 @@ $(document).ready(function() {
   }
  
 });
+
+//map
+
+
+
+
+
 /*var lat = "41.4993";
 var long = "-81.6944";
 var url = "https://en.wikipedia.org/w/api.php";
