@@ -14,10 +14,10 @@ function showResults() {
   resultsEl.classList.remove("hide");
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   // to request data from openweather.org
 
-  $(".btn").click(function() {
+  $(".btn").click(function () {
     var city = $(".location").val();
 
     if (city != "") {
@@ -32,7 +32,7 @@ $(document).ready(function() {
 
         dataType: "json",
 
-        success: function(data) {
+        success: function (data) {
           var lat = data.coord.lat;
 
           var long = data.coord.lon;
@@ -65,16 +65,16 @@ $(document).ready(function() {
 
           url = url + "?origin=*";
 
-          Object.keys(params).forEach(function(key) {
+          Object.keys(params).forEach(function (key) {
             url += "&" + key + "=" + params[key];
           });
 
           fetch(url)
-            .then(function(response) {
+            .then(function (response) {
               return response.json();
             })
 
-            .then(function(response) {
+            .then(function (response) {
               console.log(response.query.geosearch[0].pageid);
 
               var pages = response.query.geosearch;
@@ -92,7 +92,7 @@ $(document).ready(function() {
               }
             })
 
-            .catch(function(error) {
+            .catch(function (error) {
               console.log(error);
             });
         }
@@ -135,3 +135,4 @@ $(document).ready(function() {
     );
   }
 });
+
