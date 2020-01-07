@@ -1,19 +1,23 @@
 var resultsEl = document.querySelector(".results-container");
+
 var inputEl = document.querySelector(".input-container");
+
 var searchBtn = document.querySelector(".btn");
+
 var wikiHeading = document.getElementById("firstHeading");
 
 searchBtn.addEventListener("click", showResults);
 
 function showResults() {
   inputEl.classList.add("hide");
+
   resultsEl.classList.remove("hide");
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   // to request data from openweather.org
 
-  $(".btn").click(function() {
+  $(".btn").click(function () {
     var city = $(".location").val();
 
     if (city != "") {
@@ -28,37 +32,51 @@ $(document).ready(function() {
 
         dataType: "json",
 
-        success: function(data) {
+        success: function (data) {
           var lat = data.coord.lat;
+
           var long = data.coord.lon;
+
           console.log(data);
 
           var widget = show(data);
+
           $(".weather-container").html(widget);
+
           $(".location").val();
+
           show(data);
 
           var url = "https://en.wikipedia.org/w/api.php";
+
           var params = {
             action: "query",
+
             list: "geosearch",
+
             gscoord: `${lat}|${long}`,
+
             gsradius: "10000",
+
             gslimit: "10",
+
             format: "json"
           };
 
           url = url + "?origin=*";
-          Object.keys(params).forEach(function(key) {
+
+          Object.keys(params).forEach(function (key) {
             url += "&" + key + "=" + params[key];
           });
 
           fetch(url)
-            .then(function(response) {
+            .then(function (response) {
               return response.json();
             })
-            .then(function(response) {
+
+            .then(function (response) {
               console.log(response.query.geosearch[0].pageid);
+
               var pages = response.query.geosearch;
 
               for (i = 0; i < 1; i++) {
@@ -67,11 +85,14 @@ $(document).ready(function() {
                 thing.href =
                   "https://en.wikipedia.org/?curid=" +
                   response.query.geosearch[i].pageid;
+
                 thing.textContent = data.name;
+
                 document.querySelector(".facts-container").append(thing);
               }
             })
-            .catch(function(error) {
+
+            .catch(function (error) {
               console.log(error);
             });
         }
@@ -114,3 +135,4 @@ $(document).ready(function() {
     );
   }
 });
+
