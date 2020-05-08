@@ -3,3 +3,10 @@ This is an app for use when travelling somewhere and you would like a weather fo
 
 ## Technologies Used
 * HTML
+* CSS
+* Bootstrap
+* Javascript
+* Ajax
+* OpenWeather API
+* Google Maps API
+* Wikipedia API
