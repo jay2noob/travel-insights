@@ -10,3 +10,4 @@ This is an app for use when travelling somewhere and you would like a weather fo
 * OpenWeather API
 * Google Maps API
 * Wikipedia API
+![image](https://user-images.githubusercontent.com/50763314/81456973-683ef380-9162-11ea-96d3-0e16a65a5b92.png)
